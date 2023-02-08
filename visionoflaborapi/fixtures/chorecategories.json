@@ -1,0 +1,26 @@
+[
+    {
+        "model": "visionoflaborapi.ChoreCategory",
+        "pk": 1,
+        "fields": {
+            "chore": 1,
+            "category": 1
+        }
+    },
+    {
+        "model": "visionoflaborapi.ChoreCategory",
+        "pk": 2,
+        "fields": {
+            "chore": 2,
+            "category": 1
+        }
+    },
+    {
+        "model": "visionoflaborapi.ChoreCategory",
+        "pk": 3,
+        "fields": {
+            "chore": 2,
+            "category": 3
+        }
+    }
+]
