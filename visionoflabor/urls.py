@@ -15,13 +15,15 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework import routers
 from django.conf.urls import include
-from visionoflaborapi.views import check_user
+from rest_framework import routers
+from visionoflaborapi.views import check_user, UserViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
+router.register(r'users', UserViewSet, 'user')
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('checkuser', check_user)
+    path('checkuser', check_user),
+    path('', include(router.urls)),
 ]
