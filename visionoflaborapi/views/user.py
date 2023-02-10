@@ -23,8 +23,15 @@ class UserViewSet(ViewSet):
 
         users = User.objects.all()
         uid = request.query_params.get('uid', None)
+        household_query = request.query_params.get('household', None)
         if uid is not None:
             users = users.filter(uid=uid)
+        if household_query is not None:
+            if household_query == 'empty':
+                users = users.filter(household__isnull=True)
+            else:
+                user_household = Household.objects.get(pk=household_query)
+                users = users.filter(household=user_household.id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
