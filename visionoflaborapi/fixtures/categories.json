@@ -1,0 +1,45 @@
+[
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 1,
+        "fields": {
+            "label": "Indoor"
+        }
+    },
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 2,
+        "fields": {
+            "label": "Outdoor"
+        }
+    },
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 3,
+        "fields": {
+            "label": "Cleaning"
+        }
+    },
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 4,
+        "fields": {
+            "label": "Paperwork"
+        }
+
+    },
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 5,
+        "fields": {
+            "label": "Maintenance"
+        }
+    },
+    {
+        "model": "visionoflaborapi.Category",
+        "pk": 6,
+        "fields": {
+            "label": "Vehicle"
+        }
+    }
+]

@@ -1,0 +1,16 @@
+[
+    {
+        "model": "visionoflaborapi.Household",
+        "pk": 1,
+        "fields": {
+            "name": "Black"
+        }
+    },
+    {
+        "model": "visionoflaborapi.Household",
+        "pk": 2,
+        "fields": {
+            "name": "Clown Town"
+        }
+    }
+]

@@ -1,0 +1,41 @@
+[
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 1,
+        "fields": {
+            "uid": "SEfeuA4I2lXfnQpMUctH9hPbDIP2",
+            "first_name": "Christian",
+            "last_name": "Black",
+            "household": 1,
+            "photo_url": "https://facts.net/wp-content/uploads/2021/01/Bugs-Bunny-lays-on-his-back-with-carrot-in-hand-Cartoon-character.jpg",
+            "admin": true
+
+        }
+    },
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 2,
+        "fields": {
+            "uid": "",
+            "first_name": "Kelley",
+            "last_name": "Black",
+            "household": 1,
+            "photo_url": "https://preview.redd.it/grlex2p8otga1.jpg?width=640&crop=smart&auto=webp&v=enabled&s=666d74c19a548339dd2389c8f2feecf3766212a6",
+            "admin": true
+
+        }
+    },
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 3,
+        "fields": {
+            "uid": "",
+            "first_name": "Sean",
+            "last_name": "Brock",
+            "household": 2,
+            "photo_url": "https://cdn.shopify.com/s/files/1/0314/3765/2012/articles/10.22.21_InTheStudio_SeanBrock_0005_ND7_9273_3000x.jpg?v=1634714244",
+            "admin": true
+
+        }
+    }
+]

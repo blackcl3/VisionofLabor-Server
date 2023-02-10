@@ -1,0 +1,30 @@
+[
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 1,
+        "fields": {
+            "name": "Sweep floors",
+            "description": "clean (an area) by brushing away dirt or litter.",
+            "frequency": "weekly",
+            "priority": "necessary",
+            "owner": null,
+            "photo_url": "https://images.nypl.org/index.php?id=79772&t=w",
+            "household": 1
+
+        }
+    },
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 2,
+       "fields": {
+            "name": "Clean Dishes",
+            "description": "Washing the dishes is as much a part of making a meal as prepping the vegetables, making the sauces, or seasoning the meats. At times it is quite routine, sometimes raucous, other times complex. It is never convenient. ",
+            "frequency": "daily",
+            "priority": "necessary",
+            "owner": null,
+            "photo_url": "https://www.cnet.com/a/img/resize/15087b75e0e0f57708cfb00c64adf39d6d28d802/hub/2020/04/01/7c0ac548-3b26-4f7f-a400-e5227ad7ff7e/dishes-water-faucet-sponge-pan-kitchen-2.jpg?auto=webp&fit=crop&height=675&width=1200",
+            "household": 1
+
+        }
+    }
+]
