@@ -28,6 +28,31 @@ class UserViewSet(ViewSet):
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
+    def update(self, request, pk):
+        """PUT for user"""
+
+        user = User.objects.get(pk=pk)
+        uid = request.query_params.get('uid', None)
+        if uid is not None:
+            user = User.objects.get(uid=uid)
+        household = Household.objects.get(pk=request.data['household'])
+
+        user.first_name = request.data['first_name']
+        user.last_name = request.data['last_name']
+        user.household = household
+        user.photo_url = request.data['photo_url']
+        user.admin = request.data['admin']
+        user.save()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+    def destroy(self, request, pk):
+        """DELETE user"""
+
+        user = User.objects.get(pk=pk)
+        user.delete()
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
 
 class UserSerializer(serializers.ModelSerializer):
 

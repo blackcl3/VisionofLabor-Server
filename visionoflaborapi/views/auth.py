@@ -13,6 +13,7 @@ def check_user(request):
     # Use the built-in authenticate method to verify
     # authenticate returns the user object or None if no user is found
     user = User.objects.filter(uid=uid).first()
+    household = Household.objects.filter(id=user.household.id).first()
     # If authentication was successful, respond with their token
     if user is not None:
         data = {
@@ -22,7 +23,7 @@ def check_user(request):
             'last_name': user.last_name,
             'full_name': user.full_name,
             'photo_url': user.photo_url,
-            'household': user.household,
+            'household': { 'id': household.id, 'name': household.name },
             'admin': user.admin,
 
         }
@@ -46,7 +47,6 @@ def register_user(request):
         uid=request.data['uid'],
         first_name=request.data['first_name'],
         last_name=request.data['last_name'],
-        household=Household.objects.get(pk=request.data['household']),
         photo_url=request.data['photo_url'],
         admin = request.data['admin'],
     )
@@ -57,7 +57,6 @@ def register_user(request):
         'uid': user.uid,
         'first_name': user.first_name,
         'last_name': user.last_name,
-        'household': user.household.id,
         'photo_url': user.photo_url,
         'admin': user.admin
     }
