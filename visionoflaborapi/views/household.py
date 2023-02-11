@@ -19,7 +19,7 @@ class HouseholdViewSet(ViewSet):
         for chore in household.chores:
             chore.category = chorecategories.filter(chore=chore.id)
             chore.category.update()
-            
+
 
         serializer = HouseholdSerializer(household)
         return Response(serializer.data)
@@ -36,6 +36,7 @@ class ChoreSerializer(serializers.ModelSerializer):
         model = Chore
         fields = ('id', 'name', 'description',
                   'frequency', 'priority', 'owner', 'photo_url', 'household', 'category')
+        depth = 1
 
 
 class UserSerializer(serializers.ModelSerializer):

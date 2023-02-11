@@ -7,7 +7,7 @@
             "description": "clean (an area) by brushing away dirt or litter.",
             "frequency": "weekly",
             "priority": "necessary",
-            "owner": null,
+            "owner": 1,
             "photo_url": "https://images.nypl.org/index.php?id=79772&t=w",
             "household": 1
 
