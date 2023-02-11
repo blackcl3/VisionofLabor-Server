@@ -37,5 +37,18 @@
             "admin": true
 
         }
+    }, 
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 4,
+        "fields": {
+            "uid": "",
+            "first_name": "Tony",
+            "last_name": "Bourdain",
+            "household": null,
+            "photo_url": "https://media.newyorker.com/photos/59097dd2c14b3c606c1098da/master/w_2560%2Cc_limit/170213_r29425.jpg",
+            "admin": true
+
+        }
     }
 ]
