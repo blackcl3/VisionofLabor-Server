@@ -32,8 +32,21 @@
             "uid": "",
             "first_name": "Sean",
             "last_name": "Brock",
-            "household": 2,
+            "household": null,
             "photo_url": "https://cdn.shopify.com/s/files/1/0314/3765/2012/articles/10.22.21_InTheStudio_SeanBrock_0005_ND7_9273_3000x.jpg?v=1634714244",
+            "admin": true
+
+        }
+    }, 
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 4,
+        "fields": {
+            "uid": "",
+            "first_name": "Tony",
+            "last_name": "Bourdain",
+            "household": null,
+            "photo_url": "https://media.newyorker.com/photos/59097dd2c14b3c606c1098da/master/w_2560%2Cc_limit/170213_r29425.jpg",
             "admin": true
 
         }

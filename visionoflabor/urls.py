@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from visionoflaborapi.views import check_user, UserViewSet
+from visionoflaborapi.views import check_user, UserViewSet, HouseholdViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet, 'user')
+router.register(r'household', HouseholdViewSet, 'household')
 
 urlpatterns = [
     path('admin/', admin.site.urls),

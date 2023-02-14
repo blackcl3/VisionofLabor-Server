@@ -1,8 +1,6 @@
-from django.http import HttpResponseServerError
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from rest_framework.decorators import action
 from visionoflaborapi.models import User, Household
 
 class UserViewSet(ViewSet):
@@ -23,8 +21,17 @@ class UserViewSet(ViewSet):
 
         users = User.objects.all()
         uid = request.query_params.get('uid', None)
+        household_query = request.query_params.get('household', None)
         if uid is not None:
             users = users.filter(uid=uid)
+        if household_query is not None:
+            if household_query == 'empty':
+                users = users.filter(household__isnull=True)
+                serializer = UserSerializer(users, many=True)
+                return Response(serializer.data)
+            else:
+                user_household = Household.objects.get(pk=household_query)
+                users = users.filter(household=user_household.id)
         serializer = UserSerializer(users, many=True)
         return Response(serializer.data)
 
@@ -51,8 +58,6 @@ class UserViewSet(ViewSet):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
-
-
 
 class UserSerializer(serializers.ModelSerializer):
 
