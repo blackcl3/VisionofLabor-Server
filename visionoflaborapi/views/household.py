@@ -24,6 +24,61 @@ class HouseholdViewSet(ViewSet):
         serializer = HouseholdSerializer(household)
         return Response(serializer.data)
 
+    def list(self, request):
+        """GET request for All Households"""
+        household = Household.objects.all()
+
+        serializer = HouseholdSerializer(household, many=True)
+        return Response(serializer.data)
+
+    def create(self, request):
+        """POST for household
+
+        Pass in JSON object
+        Can pass in Users to be associated with given household
+        """
+
+        household_users = request.data['users']
+
+        household = Household.objects.create(
+            name=request.data['name']
+        )
+
+        if household_users is not None:
+            for user in household_users:
+                user = User.objects.get(pk=user['value'])
+                user.household = household
+                user.save(update_fields=['household'])
+        serializer = HouseholdSerializer(household)
+        return Response(serializer.data)
+
+
+    def update(self, request, pk):
+        """PUT for household"""
+
+        household = Household.objects.get(pk=pk)
+        household_users = request.data['users']
+
+        household.name = request.data['name']
+
+        if household_users is not None:
+            household_user = User.objects.all()
+            household_user = User.objects.filter(household=household)
+            for user in household_user:
+                user.household = None
+                user.save()
+
+        if household_users is not None:
+            for user in household_users:
+                user = User.objects.get(pk=user['value'])
+                user.household = household
+                user.save(update_fields=['household'])
+
+        household.save()
+
+        return Response(None, status=status.HTTP_204_NO_CONTENT)
+
+
 class ChoreCategorySerializer(serializers.ModelSerializer):
     class Meta:
         model = ChoreCategory
