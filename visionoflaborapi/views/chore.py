@@ -42,7 +42,7 @@ class ChoreViewSet(ViewSet):
             description=request.data['description'],
             frequency=request.data['frequency'],
             priority=request.data['priority'],
-            owner=request.data['owner'],
+            owner= User.objects.filter(pk=request.data['owner']).first(),
             photo_url=request.data['photo_url'],
             household=household
         )
@@ -50,7 +50,7 @@ class ChoreViewSet(ViewSet):
         if categories is not None:
             for category in categories:
                 category = ChoreCategory(chore=chore,
-                                         category=Category.objects.get(id=category["value"]))
+                                         category=Category.objects.get(pk=category["value"]))
                 category.save()
 
         serializer = ChoreSerializer(chore)
