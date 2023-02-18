@@ -39,10 +39,15 @@ class HouseholdViewSet(ViewSet):
         """
 
         household_users = request.data['users']
+        user = User.objects.get(uid=request.data['uid'])
+        if user.household is not None:
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
 
         household = Household.objects.create(
             name=request.data['name']
         )
+        user.household = household
+        user.save()
 
         if household_users is not None:
             for user in household_users:

@@ -16,15 +16,53 @@
     {
         "model": "visionoflaborapi.Chore",
         "pk": 2,
-       "fields": {
-            "name": "Clean Dishes",
-            "description": "Washing the dishes is as much a part of making a meal as prepping the vegetables, making the sauces, or seasoning the meats. At times it is quite routine, sometimes raucous, other times complex. It is never convenient. ",
-            "frequency": "daily",
-            "priority": "necessary",
-            "owner": null,
-            "photo_url": "https://www.cnet.com/a/img/resize/15087b75e0e0f57708cfb00c64adf39d6d28d802/hub/2020/04/01/7c0ac548-3b26-4f7f-a400-e5227ad7ff7e/dishes-water-faucet-sponge-pan-kitchen-2.jpg?auto=webp&fit=crop&height=675&width=1200",
-            "household": 1
-
+        "fields": {
+                "name": "Clean Dishes",
+                "description": "Washing the dishes is as much a part of making a meal as prepping the vegetables, making the sauces, or seasoning the meats. At times it is quite routine, sometimes raucous, other times complex. It is never convenient. ",
+                "frequency": "daily",
+                "priority": "necessary",
+                "owner": null,
+                "photo_url": "https://www.cnet.com/a/img/resize/15087b75e0e0f57708cfb00c64adf39d6d28d802/hub/2020/04/01/7c0ac548-3b26-4f7f-a400-e5227ad7ff7e/dishes-water-faucet-sponge-pan-kitchen-2.jpg?auto=webp&fit=crop&height=675&width=1200",
+                "household": 1
+        }
+    },
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 3,
+        "fields": {
+                "name": "Taxes",
+                "description": "There is no federal sales or use tax in the United States. All but five states impose sales and use taxes on retail sale, lease and rental of many goods, as well as some services.",
+                "frequency": "yearly",
+                "priority": "necessary",
+                "owner": null,
+                "photo_url": "https://www.ourpursuit.com/wp-content/uploads/2019/07/stamp-act.jpg",
+                "household": null
+        }
+    },
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 4,
+        "fields": {
+                "name": "Taxes",
+                "description": "There is no federal sales or use tax in the United States. All but five states impose sales and use taxes on retail sale, lease and rental of many goods, as well as some services.",
+                "frequency": "yearly",
+                "priority": "necessary",
+                "owner": null,
+                "photo_url": "https://www.ourpursuit.com/wp-content/uploads/2019/07/stamp-act.jpg",
+                "household": 2
+        }
+    },
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 5,
+        "fields": {
+                "name": "Walk a dog",
+                "description": "Put a leash and collar on the dog. There will come a time when your four-legged friend will recognize it is time to go for a walk by you simply reaching for the leash.",
+                "frequency": "daily",
+                "priority": "necessary",
+                "owner": null,
+                "photo_url": "https://www.wikihow.com/images/thumb/2/21/Walk-a-Dog-Step-12.jpg/aid2078-v4-1200px-Walk-a-Dog-Step-12.jpg",
+                "household": null
         }
     }
 ]
