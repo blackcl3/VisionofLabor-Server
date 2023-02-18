@@ -27,7 +27,6 @@ class HouseholdViewSet(ViewSet):
     def list(self, request):
         """GET request for All Households"""
         household = Household.objects.all()
-        chore = request.query_params.get('chore', None)
 
         serializer = HouseholdSerializer(household, many=True)
         return Response(serializer.data)
@@ -47,6 +46,8 @@ class HouseholdViewSet(ViewSet):
         household = Household.objects.create(
             name=request.data['name']
         )
+        user.household = household
+        user.save()
 
         if household_users is not None:
             for user in household_users:

@@ -34,9 +34,13 @@ class ChoreViewSet(ViewSet):
 
     def create(self, request):
         """POST for chore"""
-        household = Household.objects.filter(pk=request.data['household']).first()
-        categories = request.data['category']
+        uid = request.META['HTTP_AUTHORIZATION']
+        auth_user = User.objects.get(uid=uid)
+        household = Household.objects.filter(id=request.data['household']).first()
 
+        if auth_user.household.id is not household.id:
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
+        categories = request.data['category']
         chore = Chore.objects.create(
             name=request.data['name'],
             description=request.data['description'],
@@ -66,10 +70,17 @@ class ChoreViewSet(ViewSet):
         Returns:
             204 response if successful
         """
+        #check if user exists in household; if not, don't allow them to edit
+        uid = request.META['HTTP_AUTHORIZATION']
+        auth_user = User.objects.get(uid=uid)
+        chore = Chore.objects.get(pk=pk)
+        household = Household.objects.filter(
+            pk=chore.household.id).first()
+        if auth_user.household.id is not household.id:
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
+
         chore = Chore.objects.get(pk=pk)
         categories = request.data['category']
-        household = Household.objects.filter(
-            pk=request.data['household']).first()
         chore.name = request.data['name']
         chore.description = request.data['description']
         chore.frequency = request.data['frequency']
@@ -95,7 +106,14 @@ class ChoreViewSet(ViewSet):
 
     def destroy(self,request, pk):
         """DELETE chore"""
+        # check if user exists in household; if not, don't allow them to delete
+        uid = request.META['HTTP_AUTHORIZATION']
+        auth_user = User.objects.get(uid=uid)
         chore = Chore.objects.get(pk=pk)
+        household = Household.objects.filter(
+            pk=chore.household.id).first()
+        if auth_user.household.id is not household.id:
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
         chore.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 

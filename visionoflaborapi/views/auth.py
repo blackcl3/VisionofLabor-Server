@@ -13,7 +13,35 @@ def check_user(request):
     # Use the built-in authenticate method to verify
     # authenticate returns the user object or None if no user is found
     user = User.objects.filter(uid=uid).first()
-    household = Household.objects.filter(id=user.household.id).first()
+    try:
+        household = Household.objects.filter(id=user.household.id).first()
+        if user is not None:
+            data = {
+                'id': user.id,
+                'uid': user.uid,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'full_name': user.full_name,
+                'photo_url': user.photo_url,
+                'household': {'id': household.id, 'name': household.name},
+                'admin': user.admin,
+
+            }
+        return Response(data)
+    except:
+        if user is not None:
+            data = {
+                'id': user.id,
+                'uid': user.uid,
+                'first_name': user.first_name,
+                'last_name': user.last_name,
+                'full_name': user.full_name,
+                'photo_url': user.photo_url,
+                'household': None,
+                'admin': user.admin,
+
+            }
+        return Response(data)
     # If authentication was successful, respond with their token
     if user is not None:
         data = {
