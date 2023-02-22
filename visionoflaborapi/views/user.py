@@ -11,10 +11,13 @@ class UserViewSet(ViewSet):
         Args:
             response -- JSON serialized user
         """
-        user = User.objects.get(pk=pk)
+        try:
+            user = User.objects.get(pk=pk)
 
-        serializer = UserSerializer(user)
-        return Response(serializer.data)
+            serializer = UserSerializer(user)
+            return Response(serializer.data)
+        except User.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
     def list(self, request):
         """GET request for all users"""
@@ -42,7 +45,7 @@ class UserViewSet(ViewSet):
         uid = request.query_params.get('uid', None)
         if uid is not None:
             user = User.objects.get(uid=uid)
-        household = Household.objects.get(pk=request.data['household'])
+        household = Household.objects.filter(pk=request.data['household']).first()
 
         user.first_name = request.data['first_name']
         user.last_name = request.data['last_name']
