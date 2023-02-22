@@ -6,7 +6,7 @@
             "uid": "SEfeuA4I2lXfnQpMUctH9hPbDIP2",
             "first_name": "Christian",
             "last_name": "Black",
-            "household": null,
+            "household": 1,
             "photo_url": "https://facts.net/wp-content/uploads/2021/01/Bugs-Bunny-lays-on-his-back-with-carrot-in-hand-Cartoon-character.jpg",
             "admin": true
 
