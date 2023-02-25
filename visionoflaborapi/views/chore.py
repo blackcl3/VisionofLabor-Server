@@ -9,13 +9,15 @@ class ChoreViewSet(ViewSet):
 
     def retrieve(self, request, pk):
         """GET single chore"""
-        chore = Chore.objects.get(pk=pk)
-        chorecategories = ChoreCategory.objects.all()
-        chore.category = chorecategories.filter(chore=chore.id)
-        chore.category.update()
-
-        serializer = ChoreSerializer(chore)
-        return Response(serializer.data)
+        try:
+            chore = Chore.objects.get(pk=pk)
+            chorecategories = ChoreCategory.objects.all()
+            chore.category = chorecategories.filter(chore=chore.id)
+            chore.category.update()
+            serializer = ChoreSerializer(chore)
+            return Response(serializer.data)
+        except Chore.DoesNotExist as ex:
+            return Response({'message': ex.args[0]}, status=status.HTTP_404_NOT_FOUND)
 
     def list(self, request):
         """GET all chores"""
@@ -35,7 +37,10 @@ class ChoreViewSet(ViewSet):
     def create(self, request):
         """POST for chore"""
         uid = request.META['HTTP_AUTHORIZATION']
-        auth_user = User.objects.get(uid=uid)
+        try:
+            auth_user = User.objects.get(uid=uid)
+        except User.DoesNotExist:
+            return Response(None, status=status.HTTP_404_NOT_FOUND)
         household = Household.objects.filter(id=request.data['household']).first()
 
         if auth_user.household.id is not household.id:

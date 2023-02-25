@@ -50,5 +50,18 @@
             "admin": true
 
         }
+    },
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 5,
+        "fields": {
+            "uid": "5",
+            "first_name": "Action",
+            "last_name": "Bronson",
+            "household": null,
+            "photo_url": "https://media.gq-magazine.co.uk/photos/60d5aa780f38c9ada664453b/1:1/w_1079,h_1079,c_limit/25062021_Action_HP01.jpg",
+            "admin": true
+
+        }
     }
 ]
