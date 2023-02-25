@@ -1,7 +1,7 @@
 from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
-from visionoflaborapi.models import User, Household
+from visionoflaborapi.models import User, Household, Chore
 
 class UserViewSet(ViewSet):
 
@@ -13,7 +13,9 @@ class UserViewSet(ViewSet):
         """
         try:
             user = User.objects.get(pk=pk)
-
+            chores = Chore.objects.all()
+            user.chores = chores.filter(owner=user.id)
+            user.chores.update()
             serializer = UserSerializer(user)
             return Response(serializer.data)
         except User.DoesNotExist as ex:
@@ -61,11 +63,18 @@ class UserViewSet(ViewSet):
         user = User.objects.get(pk=pk)
         user.delete()
         return Response(None, status=status.HTTP_204_NO_CONTENT)
+    
+class ChoreSerializer(serializers.ModelSerializer):
+     
+     class Meta:
+         model = Chore
+         fields = ('id', 'name', 'description',
+                   'frequency', 'priority', 'owner', 'photo_url', 'household')
 
 class UserSerializer(serializers.ModelSerializer):
-
+    chores = ChoreSerializer(many=True, read_only=True)
     class Meta:
         model = User
         fields = ('id', 'uid', 'first_name', 'last_name',
-                  'full_name', 'household', 'photo_url', 'admin')
+                  'full_name', 'household', 'photo_url', 'admin', 'chores')
         depth=1

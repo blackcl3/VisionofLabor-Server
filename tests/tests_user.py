@@ -1,6 +1,6 @@
 from rest_framework import status
 from rest_framework.test import APITestCase
-from visionoflaborapi.models import User, Household
+from visionoflaborapi.models import User, Household, Chore
 from visionoflaborapi.views.user import UserSerializer
 
 class UserTests(APITestCase):
@@ -17,6 +17,9 @@ class UserTests(APITestCase):
         """Test to get a single user
         """
         user = User.objects.first()
+        chores = Chore.objects.all()
+        chore = chores.filter(owner=user.id)
+        user.chores = chore
 
         url = f'/users/{user.id}'
 
