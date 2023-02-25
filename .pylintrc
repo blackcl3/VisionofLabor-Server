@@ -2,6 +2,7 @@
   good-names=i,j,ex,pk
 
 [MESSAGES CONTROL]
+  enable=--ignore-long-lines
   disable=broad-except,imported-auth-user,missing-class-docstring,no-self-use,abstract-method
 
 [MASTER]

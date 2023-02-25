@@ -17,7 +17,7 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import include
 from rest_framework import routers
-from visionoflaborapi.views import check_user, UserViewSet, HouseholdViewSet, ChoreViewSet, CategoryViewSet
+from visionoflaborapi.views import check_user, register_user, UserViewSet, HouseholdViewSet, ChoreViewSet, CategoryViewSet
 
 router = routers.DefaultRouter(trailing_slash=False)
 router.register(r'users', UserViewSet, 'user')
@@ -28,5 +28,6 @@ router.register(r'categories', CategoryViewSet, 'category')
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('checkuser', check_user),
+    path('register', register_user),
     path('', include(router.urls)),
 ]

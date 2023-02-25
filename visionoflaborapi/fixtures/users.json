@@ -6,7 +6,7 @@
             "uid": "SEfeuA4I2lXfnQpMUctH9hPbDIP2",
             "first_name": "Christian",
             "last_name": "Black",
-            "household": null,
+            "household": 1,
             "photo_url": "https://facts.net/wp-content/uploads/2021/01/Bugs-Bunny-lays-on-his-back-with-carrot-in-hand-Cartoon-character.jpg",
             "admin": true
 
@@ -29,7 +29,7 @@
         "model": "visionoflaborapi.User",
         "pk": 3,
         "fields": {
-            "uid": "",
+            "uid": "1",
             "first_name": "Sean",
             "last_name": "Brock",
             "household": null,
@@ -42,11 +42,24 @@
         "model": "visionoflaborapi.User",
         "pk": 4,
         "fields": {
-            "uid": "",
+            "uid": "2",
             "first_name": "Tony",
             "last_name": "Bourdain",
             "household": null,
             "photo_url": "https://media.newyorker.com/photos/59097dd2c14b3c606c1098da/master/w_2560%2Cc_limit/170213_r29425.jpg",
+            "admin": true
+
+        }
+    },
+    {
+        "model": "visionoflaborapi.User",
+        "pk": 5,
+        "fields": {
+            "uid": "5",
+            "first_name": "Action",
+            "last_name": "Bronson",
+            "household": null,
+            "photo_url": "https://media.gq-magazine.co.uk/photos/60d5aa780f38c9ada664453b/1:1/w_1079,h_1079,c_limit/25062021_Action_HP01.jpg",
             "admin": true
 
         }
