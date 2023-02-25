@@ -29,7 +29,7 @@
         "model": "visionoflaborapi.User",
         "pk": 3,
         "fields": {
-            "uid": "",
+            "uid": "1",
             "first_name": "Sean",
             "last_name": "Brock",
             "household": null,
@@ -42,7 +42,7 @@
         "model": "visionoflaborapi.User",
         "pk": 4,
         "fields": {
-            "uid": "",
+            "uid": "2",
             "first_name": "Tony",
             "last_name": "Bourdain",
             "household": null,

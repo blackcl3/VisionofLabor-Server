@@ -59,6 +59,7 @@ class ChoreTests(APITestCase):
             "priority": "not necessary",
             "owner": user.id,
             "photo_url": "https://media.wired.com/photos/6385715a402153462d49763e/4:3/w_1745,h_1308,c_limit/Volvo-EX90-Featured-Gear.jpg",
+            
             "household": user.household.id,
             "category": [],
         }
