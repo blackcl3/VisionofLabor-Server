@@ -9,8 +9,8 @@
             "priority": "necessary",
             "owner": 1,
             "photo_url": "https://images.nypl.org/index.php?id=79772&t=w",
-            "household": 1
-
+            "household": 1,
+            "status": false
         }
     },
     {
@@ -23,7 +23,8 @@
                 "priority": "necessary",
                 "owner": null,
                 "photo_url": "https://www.cnet.com/a/img/resize/15087b75e0e0f57708cfb00c64adf39d6d28d802/hub/2020/04/01/7c0ac548-3b26-4f7f-a400-e5227ad7ff7e/dishes-water-faucet-sponge-pan-kitchen-2.jpg?auto=webp&fit=crop&height=675&width=1200",
-                "household": 1
+                "household": 1,
+                "status": false
         }
     },
     {
@@ -36,7 +37,8 @@
                 "priority": "necessary",
                 "owner": null,
                 "photo_url": "https://www.ourpursuit.com/wp-content/uploads/2019/07/stamp-act.jpg",
-                "household": null
+                "household": null,
+                "status": false
         }
     },
     {
@@ -49,7 +51,8 @@
                 "priority": "necessary",
                 "owner": null,
                 "photo_url": "https://www.ourpursuit.com/wp-content/uploads/2019/07/stamp-act.jpg",
-                "household": 2
+                "household": 2,
+                "status": false
         }
     },
     {
@@ -62,7 +65,8 @@
                 "priority": "necessary",
                 "owner": null,
                 "photo_url": "https://www.wikihow.com/images/thumb/2/21/Walk-a-Dog-Step-12.jpg/aid2078-v4-1200px-Walk-a-Dog-Step-12.jpg",
-                "household": null
+                "household": null,
+                "status": false
         }
     }
 ]

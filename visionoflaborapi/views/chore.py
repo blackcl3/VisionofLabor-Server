@@ -53,7 +53,8 @@ class ChoreViewSet(ViewSet):
             priority=request.data['priority'],
             owner= User.objects.filter(pk=request.data['owner']).first(),
             photo_url=request.data['photo_url'],
-            household=household
+            household=household,
+            status=False
         )
 
         if categories is not None:
@@ -123,18 +124,32 @@ class ChoreViewSet(ViewSet):
         return Response(None, status=status.HTTP_204_NO_CONTENT)
 
 
-    @action(methods=['put'], detail=True)
+    @action(methods=['PUT'], detail=True)
     def clone_chore(self, request, pk):
         """Clones sample chore"""
         user = User.objects.get(uid=request.data['uid'])
         if user.household is not None:
             chore = Chore.objects.get(pk=pk)
             chore.pk = None
+            chore.status = False
             chore.household = user.household
             chore.save()
             return Response(None, status=status.HTTP_200_OK)
         else:
             return Response(None, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['PUT'], detail=True)
+    def status_change(self, request, pk):
+        """Changes status of chore to opposite of what it already is"""
+        user = User.objects.get(uid=request.data['uid'])
+        if user.household is not None:
+            chore = Chore.objects.get(pk=pk)
+            chore.status = not(chore.status)
+            chore.save()
+            return Response(None, status=status.HTTP_200_OK)
+        else:
+            return Response(None, status=status.HTTP_404_NOT_FOUND)
+            
 
 class ChoreCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -149,5 +164,5 @@ class ChoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chore
         fields = ('id', 'name', 'description',
-                  'frequency', 'priority', 'owner', 'photo_url', 'household', 'category')
+                  'frequency', 'priority', 'owner', 'photo_url', 'household', 'status', 'category')
         depth = 1
