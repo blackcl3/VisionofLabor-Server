@@ -95,7 +95,7 @@ class ChoreSerializer(serializers.ModelSerializer):
     class Meta:
         model = Chore
         fields = ('id', 'name', 'description',
-                  'frequency', 'priority', 'owner', 'photo_url', 'household', 'category')
+                  'frequency', 'priority', 'owner', 'photo_url', 'household', 'category', 'status')
         depth = 1
 
 

@@ -8,3 +8,4 @@ class Chore(models.Model):
     owner = models.ForeignKey("User", on_delete=models.SET_NULL, null=True)
     photo_url = models.CharField(max_length=200)
     household = models.ForeignKey("Household", on_delete=models.CASCADE, null=True)
+    status= models.BooleanField()
