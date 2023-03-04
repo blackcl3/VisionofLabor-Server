@@ -156,7 +156,12 @@ class ChoreViewSet(ViewSet):
         user = User.objects.get(uid=request.data['uid'])
         chores = Chore.objects.all()
         chore = Chore.objects.get(pk=pk)
-        household = Household.objects.get(pk=chore.household.id) 
+        try:
+            household = Household.objects.get(pk=chore.household.id)
+        except:
+            return Response(None, status=status.HTTP_404_NOT_FOUND)
+        if chore.household is not None and user.household != chore.household:
+            return Response(None, status=status.HTTP_403_FORBIDDEN)
         if user.household is not None:
             chores = chores.filter(household=household)
             for c in chores:    
