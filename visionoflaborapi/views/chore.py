@@ -149,6 +149,22 @@ class ChoreViewSet(ViewSet):
             return Response(None, status=status.HTTP_200_OK)
         else:
             return Response(None, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['PUT'], detail=True)
+    def reset_status(self, request, pk):
+        """Change status of chores associated with household to false"""
+        user = User.objects.get(uid=request.data['uid'])
+        chores = Chore.objects.all()
+        chore = Chore.objects.get(pk=pk)
+        household = Household.objects.get(pk=chore.household.id) 
+        if user.household is not None:
+            chores = chores.filter(household=household)
+            for c in chores:    
+                c.status = False
+                c.save()
+            return Response(None, status=status.HTTP_200_OK)
+        else:
+            return Response(None, status=status.HTTP_404_NOT_FOUND)
             
 
 class ChoreCategorySerializer(serializers.ModelSerializer):
