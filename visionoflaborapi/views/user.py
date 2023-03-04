@@ -42,7 +42,6 @@ class UserViewSet(ViewSet):
 
     def update(self, request, pk):
         """PUT for user"""
-
         user = User.objects.get(pk=pk)
         uid = request.query_params.get('uid', None)
         if uid is not None:
