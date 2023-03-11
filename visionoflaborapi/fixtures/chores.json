@@ -68,5 +68,33 @@
                 "household": null,
                 "status": false
         }
+    }, 
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 6,
+        "fields": {
+                "name": "Walk a dog",
+                "description": "Put a leash and collar on the dog. There will come a time when your four-legged friend will recognize it is time to go for a walk by you simply reaching for the leash.",
+                "frequency": "daily",
+                "priority": "necessary",
+                "owner": 1,
+                "photo_url": "https://www.wikihow.com/images/thumb/2/21/Walk-a-Dog-Step-12.jpg/aid2078-v4-1200px-Walk-a-Dog-Step-12.jpg",
+                "household": 1,
+                "status": false
+        }
+    },
+    {
+        "model": "visionoflaborapi.Chore",
+        "pk": 7,
+        "fields": {
+                "name": "Taxes",
+                "description": "There is no federal sales or use tax in the United States. All but five states impose sales and use taxes on retail sale, lease and rental of many goods, as well as some services.",
+                "frequency": "yearly",
+                "priority": "necessary",
+                "owner": 2,
+                "photo_url": "https://www.ourpursuit.com/wp-content/uploads/2019/07/stamp-act.jpg",
+                "household": 1,
+                "status": false
+        }
     }
 ]

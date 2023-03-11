@@ -2,6 +2,7 @@ from rest_framework.viewsets import ViewSet
 from rest_framework.response import Response
 from rest_framework import serializers, status
 from rest_framework.decorators import action
+from django.db.models import Count
 from visionoflaborapi.models import User, Household, Chore, ChoreCategory, Category
 
 
@@ -170,7 +171,25 @@ class ChoreViewSet(ViewSet):
             return Response(None, status=status.HTTP_200_OK)
         else:
             return Response(None, status=status.HTTP_404_NOT_FOUND)
+        
+    @action(methods=['POST'], detail=False)
+    def get_values_for_pie_chart(self, request):
+        """GET all chores for a household (filtered by UID) and return values that can be ingested by chart.js
+        """
+        user = User.objects.get(uid=request.data['uid'])
+        chores = Chore.objects.all()
+        users = User.objects.all()
+        try:
+            household = Household.objects.get(pk=user.household.id)
+        except:
+            return Response(None, status=status.HTTP_404_NOT_FOUND)
+        if user.household is not None:
+            chores = chores.filter(
+                household=household).values('owner').annotate(owner_count=Count('owner'))
             
+            return Response(chores)
+
+        
 
 class ChoreCategorySerializer(serializers.ModelSerializer):
     class Meta:
@@ -187,3 +206,9 @@ class ChoreSerializer(serializers.ModelSerializer):
         fields = ('id', 'name', 'description',
                   'frequency', 'priority', 'owner', 'photo_url', 'household', 'status', 'category')
         depth = 1
+class ChoreOwnershipMetricsSerializer(serializers.ModelSerializer):
+    label = ChoreSerializer(source='owner', many=True)
+    data = ChoreSerializer(source='owner', many=True)
+    class Meta:
+        model = Chore
+        fields = ('id', 'label', 'data')
