@@ -68,7 +68,7 @@ class ChoreSerializer(serializers.ModelSerializer):
      class Meta:
          model = Chore
          fields = ('id', 'name', 'description',
-                   'frequency', 'priority', 'owner', 'photo_url', 'household')
+                   'frequency', 'priority', 'owner', 'photo_url', 'household', 'status')
 
 class UserSerializer(serializers.ModelSerializer):
     chores = ChoreSerializer(many=True, read_only=True)
